@@ -39,7 +39,7 @@ their configuration.")
   (let* ((spacemacs-dir-env (getenv "SPACEMACSDIR"))
          (spacemacs-dir (if spacemacs-dir-env
                             (expand-file-name (concat spacemacs-dir-env "/"))
-                          (expand-file-name ".spacemacs.d/" ~/.emacs.d/custom/.spacemacs))))
+                          (expand-file-name ".spacemacs.d/" user-home-directory))))
     (when (file-directory-p spacemacs-dir)
       spacemacs-dir))
   "Directory containing Spacemacs customizations (defaults to nil).
@@ -51,7 +51,7 @@ their configuration.")
   (let* ((spacemacs-dir-env (getenv "SPACEMACSDIR"))
          (spacemacs-init (if spacemacs-dir-env
                              (expand-file-name "init.el" spacemacs-dir-env)
-                           (expand-file-name ".spacemacs" user-home-directory))))
+                           (expand-file-name ".spacemacs" "~/.emacs.d/custom/.spacemacs"))))
       (if (file-regular-p spacemacs-init)
           spacemacs-init
         (let ((fallback-init (expand-file-name ".spacemacs.d/init.el"
