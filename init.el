@@ -1,33 +1,3 @@
-;;; init.el --- Spacemacs Initialization File -*- no-byte-compile: t -*-
-;;
-;; Copyright (c) 2012-2022 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-;; Without this comment emacs25 adds (package-initialize) here
-;;(package-initialize)
-;;(require 'ergoemacs-mode)
-;; Avoid garbage collection during startup.
-;; see `SPC h . dotspacemacs-gc-cons' for more info
-
-
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
            (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://ndossougbe.github.io/strapdown/dist/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
@@ -57,7 +27,7 @@
   "Insert markdown/html iframe template"
   (interactive "ssource:")
   (insert "<iframe style='width: 100%; height: 80vh;' src='" source "'></iframe>")
-  )
+)
 
 (defun e-init()
   (interactive)
@@ -69,20 +39,12 @@
   (find-file "~/.zshrc")
 )
 
-(defun e-alias()
-  (interactive)
-  (find-file "~/.emacs.d/eshell/alias")
-)
 
 (defun e-todo()
   (interactive)
   (find-file "~/gdrive/notes/Todo/TODO.md")
 )
 
-(defun d-bachelor-thesis()
-  (interactive)
-  (dired "/home/jeb//Documents/projects/bachelor_thesis/")
-)
 
 (defun d-infra()
   "Open infra directory"
@@ -128,20 +90,11 @@
   (browse-url-xdg-open (concat "http://127.0.0.1:8080/imp/live/" (file-name-nondirectory buffer-file-name)))
   )
 
-(defun ansible-playbook(book)
-  (interactive (read-file-name "playbook:" "~/Documents/projects/infra/playbooks/"))
-(shell-command (concat"/home/jeb/Documents/projects" (file-name-nondirectory book)))
-)
 
 (defun new_vterm ()
   (interactive)
   (vterm 'N)
  )
-(defun new_vterm_window ()
-  (interactive)
-  (tab-new)
-  (vterm 'N)
-)
 
 (defun localhost (port &optional secure-answer)
   (interactive "sPort: \nsSecure? (y/n)")
@@ -191,6 +144,15 @@
   (message response)
 )
 
+
+(defun switch-to-last-buffer ()
+  (interactive)
+  (switch-to-buffer nil)
+)
+
+(defun insert-current-date () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+
 (global-set-key (kbd "M-p") 'drag-stuff-up)
 (global-set-key (kbd "M-n") 'drag-stuff-down)
 (global-set-key (kbd "œ") 'o-markdown)
@@ -198,7 +160,6 @@
 (global-set-key (kbd "ſ") 'whitespace-cleanup)
 (global-set-key (kbd "”") 'd-notes)
 (global-set-key (kbd "ß") 'new_vterm)
-(global-set-key (kbd "»") 'new_vterm_window)
 (global-set-key (kbd "æ") 'vterm-copy-mode)
 (global-set-key (kbd "C-(") 'split-window-right-and-focus)
 (global-set-key (kbd "C-)") 'split-window-below-and-focus)
@@ -218,88 +179,6 @@
 (global-set-key (kbd "ħ") 'replace-string)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 
-
-
-(defun switch-to-last-buffer ()
-  (interactive)
-  (switch-to-buffer nil)
-)
-
-
-(defun insert-current-date () (interactive)
-       (insert (shell-command-to-string "echo -n $(date +%d-%m-%Y)")))
-
-(defun push-eshell()
-  "pushes the ~/.emacs.d/eshell/aliases file to gdrive"
-  (interactive)
-  (move-file-to-trash "~/gdrive/emacs/alias")
-  (copy-file "~/.emacs.d/eshell/alias" "~/gdrive/emacs/" "yes")
-)
-
-(defun pull-eshell()
-  "pulls the init.el file from gdrive"
-  (interactive)
-  (move-file-to-trash "~/.emacs.d/eshell/alias")
-  (copy-file "~/gdrive/emacs/alias" "~/.emacs.d/eshell/")
-  )
-
-(defun pull-init()
-  "pulls the init.el file from gdrive"
-  (interactive)
-  (move-file-to-trash "~/.emacs.d/init.el")
-  (copy-file "~/gdrive/emacs/init.el" "~/.emacs.d/")
-  )
-
-(defun pull-init()
-  "pulls the init.el file from gdrive"
-  (interactive)
-  (move-file-to-trash "~/.emacs.d/init.el")
-  (copy-file "~/gdrive/emacs/init.el" "~/.emacs.d/")
-  )
-
-(defun push-init()
-  "pushes the ~/.emacs.d/init.el file to gdrive"
-  (interactive)
-  (move-file-to-trash "~/gdrive/emacs/init.el")
-  (copy-file "~/.emacs.d/init.el" "~/gdrive/emacs/" "yes")
-  )
-
-(defun pull-init()
-  "pulls the init.el file from gdrive"
-  (interactive)
-  (move-file-to-trash "~/.emacs.d/init.el")
-  (copy-file "~/gdrive/emacs/init.el" "~/.emacs.d/")
-  )
-
-(defun push-spacemacs()
-  "pushes the .spacemacs file to gdrive"
-  (interactive)
-  (move-file-to-trash "~/gdrive/emacs/.spacemacs")
-  (copy-file "~/.spacemacs" "~/gdrive/emacs/" "yes")
-  )
-
-(defun pull-spacemacs()
-  "pulls the .spacemacs file from gdrive"
-  (interactive)
-  (move-file-to-trash "~/.spacemacs")
-  (copy-file "~/gdrive/emacs/.spacemacs" "~/")
-  )
-
-(defun push-gdrive()
-  "pushes the init and spacmeacs file to gdrive"
-  (interactive)
-  (push-init)
-  (push-spacemacs)
-  (push-eshell)
-  )
-
-(defun pull-gdrive()
-  "pulls the init and spacmeacs file from gdrive"
-  (interactive)
-  (pull-init)
-  (pull-spacemacs)
-  (pull-eshell)
-  )
 
 
 (defconst emacs-start-time (current-time))
