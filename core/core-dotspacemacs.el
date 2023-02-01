@@ -51,7 +51,7 @@ their configuration.")
   (let* ((spacemacs-dir-env (getenv "SPACEMACSDIR"))
          (spacemacs-init (if spacemacs-dir-env
                              (expand-file-name "init.el" spacemacs-dir-env)
-                           (expand-file-name ".spacemacs" "~/.emacs.d/custom/.spacemacs"))))
+                           (expand-file-name ".spacemacs" "~/.emacs.d/custom/"))))
       (if (file-regular-p spacemacs-init)
           spacemacs-init
         (let ((fallback-init (expand-file-name ".spacemacs.d/init.el"
