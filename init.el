@@ -34,6 +34,11 @@
   (find-file "~/.emacs.d/init.el")
 )
 
+(defun e-custom()
+  (interactive)
+  (dired "~/.emacs.d")
+)
+
 (defun e-zs()
   (interactive)
   (find-file "~/.zshrc")
