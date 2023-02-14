@@ -57,6 +57,12 @@
   (dired "/home/jeb/Documents/projects/infra/")
 )
 
+(defun d-platform()
+  "Open infra directory"
+  (interactive)
+  (dired "/home/jeb/Documents/projects/platform/")
+  )
+
 (defun d-tptool-infra()
   "Open infra directory"
   (interactive)
