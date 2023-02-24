@@ -200,9 +200,7 @@
 (global-set-key (kbd "ħ") 'replace-string)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-application-framework/")
-(require 'eaf)
-(require 'eaf-browser)
+
 
 (defconst emacs-start-time (current-time))
 (setq gc-cons-threshold 402653184 gc-cons-percentage 0.6)
