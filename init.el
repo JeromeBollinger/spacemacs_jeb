@@ -170,6 +170,7 @@
 (defun insert-current-date () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
+(setq telega-use-docker t)
 (global-set-key (kbd "M-p") 'drag-stuff-up)
 (global-set-key (kbd "M-n") 'drag-stuff-down)
 (global-set-key (kbd "œ") 'o-markdown)
