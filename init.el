@@ -114,7 +114,8 @@
   (browse-url (concat"http" (if my-secure "s") "://localhost:" port))
 )
 
-(defun swap-keybinding (filename)
+(defun choose-keybinding-layout (filename)
+  "choose a keybinding layout defined in a file with xmodmap"
   (interactive (list (let ((default-directory "~/.emacs.d/custom/keyboard/"))
                        (read-file-name "Enter file name: "))))
    (shell-command (concat "xmodmap " filename))
