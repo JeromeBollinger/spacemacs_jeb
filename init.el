@@ -147,20 +147,26 @@
   (browse-url (concat "https://www.google.com/search?q=" marked-string))
 )
 
-(defun ask-openai (prompt length)
+(defun ask-openai (prompt)
   "Establish a connection with OpenAI."
-  (interactive "sAsk OpenAI:\nslength")
-  (setq response (shell-command-to-string (concat "curl https://api.openai.com/v1/completions \
+  (interactive "sAsk OpenAI:")
+  (setq response (shell-command-to-string (concat "print $(curl https://api.openai.com/v1/completions \
                  -H 'Content-Type: application/json' \
                  -H 'Authorization: ' \
                  -d '{
                  \"model\": \"text-davinci-003\",
                  \"prompt\": \"" prompt "\",
-                 \"max_tokens\": "length",
+                 \"max_tokens\": 500,
                  \"temperature\": 0
-                 }' 2>/dev/null" "| jq '.choices[0].text'")))
-  (message response)
-)
+                 }' 2>/dev/null" "| jq '.choices[0].text' )"))
+  )
+
+  (cond ((get-buffer-window "AI"))
+        (t (split-window-right-and-focus) (switch-to-buffer "AI"))
+  )
+  (with-current-buffer (get-buffer-create "AI") (end-of-buffer) (insert (concat prompt ":" response "
+"))
+))
 
 
 (defun switch-to-last-buffer ()
