@@ -114,14 +114,10 @@
   (browse-url (concat"http" (if my-secure "s") "://localhost:" port))
 )
 
-(defun swap-keybinding ()
-  (interactive)
-  (shell-command "xmodmap ~/.emacs.d/custom/keyboard/swap_keys")
-)
-
-(defun default-keybinding ()
-  (interactive)
-  (shell-command "xmodmap ~/.emacs.d/custom/keyboard/standard_keys")
+(defun swap-keybinding (filename)
+  (interactive (list (let ((default-directory "~/.emacs.d/custom/keyboard/"))
+                       (read-file-name "Enter file name: "))))
+   (shell-command (concat "xmodmap " filename))
 )
 
 (defun unzip (file)
