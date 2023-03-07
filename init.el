@@ -202,6 +202,8 @@
 (global-set-key (kbd "“") 'bookmark-set)
 (global-set-key (kbd "þ") 'bookmark-jump)
 (global-set-key (kbd "ħ") 'replace-string)
+(global-set-key (kbd "C- C-r") 'rectangle-mark-mode)
+(global-set-key (kbd "C-x C-l") 'string-rectangle)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 
 
