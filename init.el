@@ -178,6 +178,7 @@
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
 (setq telega-use-docker t)
+(setq ac-use-menu-map t)
 (global-set-key (kbd "M-p") 'drag-stuff-up)
 (global-set-key (kbd "M-n") 'drag-stuff-down)
 (global-set-key (kbd "œ") 'o-markdown)
@@ -192,6 +193,7 @@
 (global-set-key (kbd "đ") 'spacemacs/toggle-maximize-buffer)
 (add-hook 'vterm-mode-hook (lambda () (global-hl-line-mode 0)))
 (add-hook 'vterm-mode-hook (lambda () (text-scale-decrease 2)))
+(add-hook 'prog-mode-hook (lambda () (auto-complete-mode)))
 (global-set-key (kbd "ł") 'switch-to-last-buffer)
 (global-set-key (kbd "ŋ") 'magit)
 (global-set-key (kbd "←") 'undo)
@@ -202,7 +204,7 @@
 (global-set-key (kbd "“") 'bookmark-set)
 (global-set-key (kbd "þ") 'bookmark-jump)
 (global-set-key (kbd "ħ") 'replace-string)
-(global-set-key (kbd "C- C-r") 'rectangle-mark-mode)
+(global-set-key (kbd "C-x C-r") 'rectangle-mark-mode)
 (global-set-key (kbd "C-x C-l") 'string-rectangle)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 
