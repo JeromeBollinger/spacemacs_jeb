@@ -207,7 +207,6 @@ With argument ARG, do this that many times."
 (global-set-key (kbd "đ") 'spacemacs/toggle-maximize-buffer)
 (add-hook 'vterm-mode-hook (lambda () (global-hl-line-mode 0)))
 (add-hook 'vterm-mode-hook (lambda () (text-scale-decrease 2)))
-(add-hook 'prog-mode-hook (lambda () (auto-complete-mode)))
 (add-hook 'yaml-mode-hook (lambda () (auto-complete-mode)))
 (add-hook 'prog-mode-hook (lambda () (idle-highlight-mode)))
 (add-hook 'yaml-mode-hook (lambda () (idle-highlight-mode)))
