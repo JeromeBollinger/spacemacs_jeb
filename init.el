@@ -177,8 +177,22 @@
 (defun insert-current-date () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
+(defun erase-word (arg)
+  "erase characters forward until encountering the end of a word.
+With argument ARG, do this that many times."
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+
+(defun backward-erase-word (arg)
+  "Erase characters backward until encountering the beginning of a word.
+With argument ARG, do this that many times."
+  (interactive "p")
+  (delete-region (point) (progn (backward-word arg) (point))))
+
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
+(global-set-key (kbd "C-<backspace>") 'backward-erase-word)
+(global-set-key (kbd "M-d") 'erase-word)
 (global-set-key (kbd "M-p") 'drag-stuff-up)
 (global-set-key (kbd "M-n") 'drag-stuff-down)
 (global-set-key (kbd "œ") 'o-markdown)
