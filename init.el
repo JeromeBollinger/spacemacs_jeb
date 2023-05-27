@@ -197,6 +197,7 @@ With argument ARG, do this that many times."
                                        ))))
   (find-file (concat "/ssh:" arg ":~/" ))
 )
+(delete-selection-mode 1)
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
 (setq lsp-signature-auto-activate nil)
