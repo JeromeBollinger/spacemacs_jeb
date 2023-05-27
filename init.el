@@ -1,3 +1,6 @@
+(with-eval-after-load 'dired
+  (define-key dired-mode-map ")" 'dired-git-info-mode))
+
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
            (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://ndossougbe.github.io/strapdown/dist/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
@@ -198,6 +201,7 @@ With argument ARG, do this that many times."
   (find-file (concat "/ssh:" arg ":~/" ))
 )
 (delete-selection-mode 1)
+(setq dgi-auto-hide-details-p nil)
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
 (setq lsp-signature-auto-activate nil)
@@ -217,6 +221,7 @@ With argument ARG, do this that many times."
 (global-set-key (kbd "C-)") 'split-window-below-and-focus)
 (global-set-key (kbd "ð") 'delete-window)
 (global-set-key (kbd "đ") 'spacemacs/toggle-maximize-buffer)
+(add-hook 'dired-after-readin-hook 'dired-git-info-auto-enable)
 (add-hook 'vterm-mode-hook (lambda () (global-hl-line-mode 0)))
 (add-hook 'vterm-mode-hook (lambda () (text-scale-decrease 2)))
 (add-hook 'yaml-mode-hook (lambda () (auto-complete-mode)))

@@ -76,6 +76,7 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
+                                      dired-git-info
                                       idle-highlight-mode
                                       just-mode
                                       vterm
