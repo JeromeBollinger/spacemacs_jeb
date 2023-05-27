@@ -189,6 +189,14 @@ With argument ARG, do this that many times."
   (interactive "p")
   (delete-region (point) (progn (backward-word arg) (point))))
 
+(defun ssh-tramp (arg)
+  "Easier ssh tramp access by reading ssh config"
+  (interactive (list
+                (completing-read "Select host: "
+                                 (list (shell-command-to-string "cat ~/.ssh/config | grep Host\ | cut -d ' ' -f 2")
+                                       ))))
+  (find-file (concat "/ssh:" arg ":~/" ))
+)
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
 (setq lsp-signature-auto-activate nil)
