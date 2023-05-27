@@ -200,6 +200,12 @@ With argument ARG, do this that many times."
                                        ))))
   (find-file (concat "/ssh:" arg ":~/" ))
 )
+
+(global-set-key (kbd "M-j") 'backward-char)
+(global-set-key (kbd "M-k") 'next-line)
+(global-set-key (kbd "M-l") 'forward-char)
+(global-set-key (kbd "M-i") 'previous-line)
+
 (delete-selection-mode 1)
 (setq dgi-auto-hide-details-p nil)
 (setq telega-use-docker t)
