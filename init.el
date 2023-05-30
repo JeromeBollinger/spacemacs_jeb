@@ -220,6 +220,7 @@ With argument ARG, do this that many times."
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
 (setq lsp-signature-auto-activate nil)
+(setq lsp-rust-server 'rust-analyzer)
 (global-set-key (kbd "ĸ") 'kill-this-buffer)
 (global-set-key (kbd "“") 'helm-buffers-list)
 (global-set-key (kbd "C-<backspace>") 'backward-erase-word)
