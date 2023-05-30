@@ -212,6 +212,10 @@ With argument ARG, do this that many times."
 (global-set-key (kbd "M-i") 'previous-line)
 
 (delete-selection-mode 1)
+(auto-save-visited-mode 1)
+(setq auto-save-interval 1)asdfcs
+(setq auto-save-timeout 2)
+
 (setq dgi-auto-hide-details-p nil)
 (setq telega-use-docker t)
 (setq ac-use-menu-map t)
