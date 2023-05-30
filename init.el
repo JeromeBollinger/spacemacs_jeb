@@ -37,6 +37,11 @@
   (find-file "~/.emacs.d/init.el")
 )
 
+(defun e-spacemacs()
+  (interactive)
+  (find-file "~/.emacs.d/custom/.spacemacs")
+  )
+
 (defun e-custom()
   (interactive)
   (dired "~/.emacs.d")
