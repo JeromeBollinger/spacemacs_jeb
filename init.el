@@ -213,7 +213,7 @@ With argument ARG, do this that many times."
 
 (delete-selection-mode 1)
 (auto-save-visited-mode 1)
-(setq auto-save-interval 1)asdfcs
+(setq auto-save-interval 1)
 (setq auto-save-timeout 2)
 
 (setq dgi-auto-hide-details-p nil)
